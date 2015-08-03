@@ -262,22 +262,22 @@ public class AnalisisAsistenciaCaliente {
                         asistenciaDetalladoList.add(asistenciaDetalle);
                         return asistenciaDetalladoList;
                     } else {
-                        Boleta boleta = bolc.permisoXFechaXEmpleado(empleado, fecha);
+//                        Boleta boleta = bolc.permisoXFechaXEmpleado(empleado, fecha);
 
-                        if (boleta != null) {
-
-                            asistenciaDetalle = new RptAsistenciaDetallado();
-                            asistenciaDetalle.setTipoAsistencia("SP");
-                            asistenciaDetalle.setMotivo(boleta.getDescripcion());
-                            asistenciaDetalle.setFecha(fecha);
-                            asistenciaDetalle.setBoleta(boleta);
-                            asistenciaDetalle.setEmpleado(empleado);
-                            asistenciaDetalle.setContrato(contrato);
-                            asistenciaDetalle.setAsignacionHorario(asignacionHorario);
-                            asistenciaDetalle.setArea(areaEmpleado == null ? null : areaEmpleado.getDepartamento());
-                            asistenciaDetalladoList.add(asistenciaDetalle);
-                            return asistenciaDetalladoList;
-                        } else {
+//                        if (boleta != null) {
+//
+//                            asistenciaDetalle = new RptAsistenciaDetallado();
+//                            asistenciaDetalle.setTipoAsistencia("SP");
+//                            asistenciaDetalle.setMotivo(boleta.getDescripcion());
+//                            asistenciaDetalle.setFecha(fecha);
+//                            asistenciaDetalle.setBoleta(boleta);
+//                            asistenciaDetalle.setEmpleado(empleado);
+//                            asistenciaDetalle.setContrato(contrato);
+//                            asistenciaDetalle.setAsignacionHorario(asignacionHorario);
+//                            asistenciaDetalle.setArea(areaEmpleado == null ? null : areaEmpleado.getDepartamento());
+//                            asistenciaDetalladoList.add(asistenciaDetalle);
+//                            return asistenciaDetalladoList;
+//                        } else {
                             List<DetalleJornada> detalleJornadaList = dtjornc.buscarXJornada(turno.getJornada());
 
                             char asistenciaResultado = 'R';
@@ -345,7 +345,7 @@ public class AnalisisAsistenciaCaliente {
                             }//FIN DEL FOR
 
                             return asistenciaDetalladoList;
-                        }
+//                        }
                     }
 
                 } else {
