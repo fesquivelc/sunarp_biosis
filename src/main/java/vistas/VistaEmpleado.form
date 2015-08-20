@@ -90,6 +90,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="org.jdesktop.swingx.JXTable" name="tblEmpleado">
+              <Properties>
+                <Property name="horizontalScrollEnabled" type="boolean" value="true"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

@@ -115,6 +115,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         gridBagConstraints.gridy = 0;
         jPanel1.add(btnBuscar, gridBagConstraints);
 
+        tblEmpleado.setHorizontalScrollEnabled(true);
         jScrollPane1.setViewportView(tblEmpleado);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

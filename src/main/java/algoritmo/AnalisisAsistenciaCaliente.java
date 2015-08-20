@@ -55,7 +55,7 @@ public class AnalisisAsistenciaCaliente {
     private final AsignacionPermisoControlador asgpermc = new AsignacionPermisoControlador();
     private final VacacionControlador vacc = new VacacionControlador();
     private final AreaEmpleadoControlador aperc = new AreaEmpleadoControlador();
-    private final BoletaControlador bolc = BoletaControlador.getInstance();
+//    private final BoletaControlador bolc = BoletaControlador.getInstance();
 
     private List<Empleado>[] obtenerLimites(List<Empleado> empleados) {
         List<Empleado>[] limites = new List[4];
