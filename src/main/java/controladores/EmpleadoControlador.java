@@ -5,11 +5,13 @@
  */
 package controladores;
 
+import com.personal.utiles.FechaUtil;
 import entidades.escalafon.Contrato;
 import entidades.escalafon.Empleado;
 import entidades.escalafon.FichaGeneral;
 import entidades.escalafon.FichaLaboral;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +41,14 @@ public class EmpleadoControlador extends Controlador<Empleado> {
         
     }
     
-    
+    public List<Empleado> buscarXNoMarcacion(Date fechaInicio, Date horaInicio, Date fechaFin, Date horaFin){
+        String jpql = "SELECT e FROM Empleado e WHERE "
+                + "e NOT EXISTS (SELECT m.empleado FROM Marcacion m WHERE m.fechaHora BETWWEEN fechaHoraInicio AND fechaHoraFin) ";
+        Map<String, Object> parametros = new HashMap<>();
+        parametros.put("fechaHoraInicio", FechaUtil.unirFechaHora(fechaInicio, horaInicio));
+        parametros.put("fechaHoraFin", FechaUtil.unirFechaHora(fechaFin, horaFin));
+        return this.getDao().buscar(jpql, parametros);
+    }
 
     public List<Empleado> buscarXPatron(String patron) {
         String jpql = "SELECT e FROM Empleado e WHERE "

@@ -40,8 +40,10 @@ import vistas.mantenimientos.CRUDJornada;
 import vistas.mantenimientos.CRUDPeriodo;
 import vistas.mantenimientos.CRUDTipoPermiso;
 import vistas.mantenimientos.CRUDUsuario;
+import vistas.reportes.RptEmpleadosNoMarcan;
 import vistas.reportes.RptPermisos;
 import vistas.reportes.RptRegistroAsistencia;
+import vistas.reportes.RptTardanzasMes;
 import vistas.reportes.RptVacaciones;
 
 /**
@@ -90,8 +92,8 @@ public class Principal extends javax.swing.JFrame {
         btnAsignarPermiso = new javax.swing.JButton();
         btnHorarios = new javax.swing.JButton();
         btnRegistroAsistencia = new javax.swing.JButton();
-        lblJuvitec = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
+        lblJuvitec = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         mnuMarcaciones = new javax.swing.JMenu();
         mnuVerEmpleados = new javax.swing.JMenuItem();
@@ -110,6 +112,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         mnuConfiguracion = new javax.swing.JMenu();
         mnuPeriodos = new javax.swing.JMenuItem();
         mnuSedesAreas = new javax.swing.JMenuItem();
@@ -121,29 +124,15 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE CONTROL DE ASISTENCIA DE PERSONAL - BIOSIS - SAN MARCOS");
         setIconImage(new javax.swing.ImageIcon("iconos/logo.png").getImage());
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 10, 0};
-        layout.rowHeights = new int[] {0, 10, 0, 10, 0};
-        getContentPane().setLayout(layout);
 
         desktopPane.setDragMode(javax.swing.JDesktopPane.OUTLINE_DRAG_MODE);
         desktopPane.add(jSeparator1);
         jSeparator1.setBounds(180, 30, 0, 2);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 1014;
-        gridBagConstraints.ipady = 616;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.1;
-        getContentPane().add(desktopPane, gridBagConstraints);
+        getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
 
         java.awt.GridBagLayout pnlBotnesLayout = new java.awt.GridBagLayout();
-        pnlBotnesLayout.columnWidths = new int[] {0, 10, 0, 10, 0, 10, 0, 10, 0};
+        pnlBotnesLayout.columnWidths = new int[] {0, 10, 0, 10, 0, 10, 0, 10, 0, 10, 0};
         pnlBotnesLayout.rowHeights = new int[] {0};
         pnlBotnes.setLayout(pnlBotnesLayout);
 
@@ -207,28 +196,18 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         pnlBotnes.add(btnRegistroAsistencia, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        getContentPane().add(pnlBotnes, gridBagConstraints);
-
-        lblJuvitec.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblJuvitec.setText("SERVICIOS INFORMÁTICOS JUVITEC S.R.L.");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(lblJuvitec, gridBagConstraints);
-
         lblUsuario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblUsuario.setText("Usuario:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        getContentPane().add(lblUsuario, gridBagConstraints);
+        pnlBotnes.add(lblUsuario, gridBagConstraints);
+
+        getContentPane().add(pnlBotnes, java.awt.BorderLayout.PAGE_START);
+
+        lblJuvitec.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblJuvitec.setText("SERVICIOS INFORMÁTICOS JUVITEC S.R.L.");
+        getContentPane().add(lblJuvitec, java.awt.BorderLayout.PAGE_END);
 
         mnuMarcaciones.setMnemonic('e');
         mnuMarcaciones.setText("Empleados");
@@ -369,6 +348,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnuReportes.add(jMenuItem3);
+
+        jMenuItem7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jMenuItem7.setText("Reporte mensual de tardanzas");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        mnuReportes.add(jMenuItem7);
 
         menuBar.add(mnuReportes);
 
@@ -577,6 +565,12 @@ public class Principal extends javax.swing.JFrame {
         agregarAPanel(autorizacion, true);
     }//GEN-LAST:event_mnuHorasExtraActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        RptTardanzasMes tardanzas = new RptTardanzasMes();
+        agregarAPanel(tardanzas, true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarPermiso;
@@ -590,6 +584,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblJuvitec;
@@ -666,12 +661,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     private void horarios() {
-        CRUDHorario horarios = new CRUDHorario();
-        agregarAPanel(horarios, true);
+        agregarAPanel(new HorarioRotativo(), true);
+//        CRUDHorario horarios = new CRUDHorario();
+//        agregarAPanel(horarios, true);
     }
 
     private void registroAsistencia() {
-        FrmReporteAsistencia registroAsistencia = new FrmReporteAsistencia();
+//        FrmReporteAsistencia registroAsistencia = new FrmReporteAsistencia();
+        RptRegistroAsistencia registroAsistencia = new RptRegistroAsistencia();
         agregarAPanel(registroAsistencia, true);
     }
 

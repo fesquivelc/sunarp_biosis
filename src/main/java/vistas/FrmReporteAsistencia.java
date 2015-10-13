@@ -12,7 +12,7 @@ import controladores.EmpleadoControlador;
 import controladores.MarcacionControlador;
 import controladores.PermisoControlador;
 import controladores.TurnoControlador;
-import controladores.sisgedo.BoletaControlador;
+//import controladores.sisgedo.BoletaControlador;
 import entidades.AsignacionHorario;
 import entidades.Marcacion;
 import entidades.Permiso;
@@ -21,7 +21,7 @@ import entidades.escalafon.AreaEmpleado;
 import entidades.escalafon.Departamento;
 import entidades.escalafon.Empleado;
 import entidades.reportes.RptAsistenciaDetallado;
-import entidades.sisgedo.Boleta;
+//import entidades.sisgedo.Boleta;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -489,7 +489,7 @@ public class FrmReporteAsistencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnReportePermisosActionPerformed
 
     PermisoControlador pc = new PermisoControlador();
-    BoletaControlador bc = BoletaControlador.getInstance();
+//    BoletaControlador bc = BoletaControlador.getInstance();
     
     private void tblDetalleMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseReleased
         // TODO add your handling code here:
@@ -501,7 +501,7 @@ public class FrmReporteAsistencia extends javax.swing.JInternalFrame {
             mostrarMarcacion(asistencia.getEmpleado(), asistencia.getFecha());
             //PERMISOS X HORAS
             mostrarPermisosXHoras(asistencia);
-            mostrarPermisosXHorasSISGEDO(asistencia);
+//            mostrarPermisosXHorasSISGEDO(asistencia);
         }
     }//GEN-LAST:event_tblDetalleMouseReleased
 
@@ -519,7 +519,7 @@ public class FrmReporteAsistencia extends javax.swing.JInternalFrame {
     private List<Turno> turnoList;
     private List<Marcacion> marcacionList;
     private List<Permiso> permisoList;
-    private List<Boleta> boletaList;
+//    private List<Boleta> boletaList;
     private MTDetalleRegistroAsistencia mtdra;
     private final MarcacionControlador marcc = new MarcacionControlador();
     private final EmpleadoControlador empc = new EmpleadoControlador();
@@ -689,17 +689,17 @@ public class FrmReporteAsistencia extends javax.swing.JInternalFrame {
         
     }
     
-    private void mostrarPermisosXHorasSISGEDO(RptAsistenciaDetallado asistencia){
-        
-        List<Boleta> boletaLista = bc.permisoXHoraXFecha(asistencia.getEmpleado(),
-                                                                            asistencia.getFecha(),
-                                                                            asistencia.getDetalleJornada().getEntradaDesde(),
-                                                                            asistencia.getDetalleJornada().getSalida());
-        boletaList.clear();
-        boletaList.addAll(boletaLista);
-        tblPermisosSISGEDO.packAll();
-        
-    }
+//    private void mostrarPermisosXHorasSISGEDO(RptAsistenciaDetallado asistencia){
+//        
+//        List<Boleta> boletaLista = bc.permisoXHoraXFecha(asistencia.getEmpleado(),
+//                                                                            asistencia.getFecha(),
+//                                                                            asistencia.getDetalleJornada().getEntradaDesde(),
+//                                                                            asistencia.getDetalleJornada().getSalida());
+//        boletaList.clear();
+//        boletaList.addAll(boletaLista);
+//        tblPermisosSISGEDO.packAll();
+//        
+//    }
 
     private void generarReporteResumen() {
         for(RptAsistenciaDetallado detalle : asistenciaDetalladoList){

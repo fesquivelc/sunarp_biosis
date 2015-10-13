@@ -6,9 +6,9 @@
 package pruebas;
 
 import controladores.EmpleadoControlador;
-import controladores.sisgedo.BoletaControlador;
+//import controladores.sisgedo.BoletaControlador;
 import entidades.escalafon.Empleado;
-import entidades.sisgedo.Boleta;
+//import entidades.sisgedo.Boleta;
 import java.util.List;
 
 /**
@@ -23,14 +23,14 @@ public class PruebaBoleta {
     public static void main(String[] args) {
         // TODO code application logic here
         EmpleadoControlador ec = new EmpleadoControlador();
-        BoletaControlador bc = BoletaControlador.getInstance();
+//        BoletaControlador bc = BoletaControlador.getInstance();
         
         Empleado empleado = ec.buscarPorId("02607628");
         
         System.out.println("EMPLEADO: "+ empleado.getNombreCompleto());
-        List<Boleta> boletaList = bc.permisoXEmpleado(empleado);
+//        List<Boleta> boletaList = bc.permisoXEmpleado(empleado);
         
-        System.out.println("HOLA: "+boletaList.size());
+//        System.out.println("HOLA: "+boletaList.size());
         
         
     }

@@ -25,12 +25,12 @@ public class MarcacionControlador extends Controlador<Marcacion> {
     public MarcacionControlador() {
         super(Marcacion.class);
         horaFinal = new Date(104399000);
-    }
+    }   
 
     public List<Marcacion> buscarXFecha(Empleado empleado, Date fechaInicio, Date fechaFin, int desde, int tamanio) {
         String jpql = "SELECT m FROM Marcacion m WHERE m.empleado = :dni AND m.fechaHora BETWEEN :fechaInicio AND :fechaFin "
                 + "ORDER BY m.empleado.paterno,m.empleado.materno,m.empleado.nombre,m.fechaHora";
-        LOG.error("DOCUMENTO: " + empleado);
+//        LOG.error("DOCUMENTO: " + empleado);
         Map<String, Object> mapa = new HashMap<>();
 
         mapa.put("dni", empleado);
